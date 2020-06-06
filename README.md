@@ -1,99 +1,207 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's blog starter
-</h1>
+# cityKidBlog
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+[![npm version][npm-badge]][npm-url]
+[![npm bundle size][downloads-badge]][npm-url]
+[![npm bundle size][size-badge]][npm-url]
+[![Build Status][build-badge]][build-url]
+[![Codecov Coverage][coverage-badge]][coverage-url]
+[![prettier][prettier-badge]][prettier-url]
+[![TypeScript][typescript-badge]][typescript-url]
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+_👀 Easily apply tilt hover effect on React components_
 
-## 🚀 Quick start
+![](demo.gif)
 
-1.  **Create a Gatsby site.**
+## Demo
 
-    Use the Gatsby CLI to create a new site, specifying the blog starter.
+**[Demos](https://mkosir.github.io/react-parallax-tilt)** created with [React DemoTab 📑](https://github.com/mkosir/react-demo-tab)
 
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
+## Install
 
-1.  **Start developing.**
+```bash
+npm install react-parallax-tilt
+```
 
-    Navigate into your new site’s directory and start it up.
+## Features
 
-    ```shell
-    cd my-blog-starter/
-    gatsby develop
-    ```
+- Lightweight (<4kb), zero dependencies 📦
+- Supports **mouse** and **touch** events
+- Support for device tilting (**gyroscope**)
+- **Glare** effect 🌟 with custom props (color, position,...) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--parallax-effect-glare-scale)
+- Events to keep track of component values 📐 (tilt, glare, mousemove,...) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--events-all)
+- Many effects and functionalities that can be easily applied:
+  - **scale** on hover [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--scale)
+  - **disable** x/y axis [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--disable-x-y-axis)
+  - **flip** component vertically/horizontally [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--flip-vertically-horizontally)
+  - tilt hover effect on the **whole window** [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--track-on-window)
+  - tilt component with custom **manual input** 🕹 (joystick, slider etc.) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--tilt-manual-input)
+  - **parallax** effect on overlaid images [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--parallax-effect-image)
 
-1.  **Open the source code and start editing!**
+## Example
 
-    Your site is now running at `http://localhost:8000`!
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Tilt from 'react-parallax-tilt';
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+const App = () => {
+  return (
+    <Tilt>
+      <div style={{ height: '300px', backgroundColor: 'darkgreen' }}>
+        <h1>React Parallax Tilt 👀</h1>
+      </div>
+    </Tilt>
+  );
+};
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+ReactDOM.render(<App />, document.getElementById('root'));
+```
 
-## 🧐 What's inside?
+## Props
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+All of the props are optional.  
+Below is the complete list of possible props and their options:
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+> ▶︎ indicates the default value if there's one
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+**tiltEnable**: _boolean_ ▶︎ `true`  
+Boolean to enable/disable tilt effect.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+**tiltReverse**: _boolean_ ▶︎ `false`  
+Reverse the tilt direction.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+**tiltAngleXInitial**: _number_ ▶︎ `0`  
+Initial tilt value (degrees) on x axis.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+**tiltAngleYInitial**: _number_ ▶︎ `0`  
+Initial tilt value (degrees) on y axis.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+**tiltMaxAngleX**: _number_ ▶︎ `20`  
+Range: `0 - 90`  
+Max tilt rotation (degrees) on x axis.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+**tiltMaxAngleY**: _number_ ▶︎ `20`  
+Range: `0 - 90`  
+Max tilt rotation (degrees) on y axis.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+**tiltAxis**: _Axis | null_ ▶︎ `null`  
+_Axis = 'x' | 'y'_  
+Which axis should be enabled. If null both are enabled.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+**tiltAngleXManual**: _number_ | null} ▶︎ `null`  
+Manual tilt rotation (degrees) on x axis.
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+**tiltAngleYManual**: _number_ | null} ▶︎ `null`  
+Manual tilt rotation (degrees) on y axis.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+**glareEnable**: _boolean_ ▶︎ `false`  
+Boolean to enable/disable glare effect.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+**glareMaxOpacity**: _number_ ▶︎ `0.7`  
+Range: `0 - 1`  
+The maximum glare opacity (0.5 = 50%, 1 = 100%, etc.).
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+**glareColor**: _string_ ▶︎ `#ffffff`  
+Set color of glare effect.
 
-## 🎓 Learning Gatsby
+**glarePosition**: _GlarePosition_ ▶︎ `bottom`  
+_GlarePosition = 'top' | 'right' | 'bottom' | 'left' | 'all'_  
+Set position of glare effect.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+**glareReverse**: _boolean_ ▶︎ `false`  
+Reverse the glare direction.
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+**scale**: _number_ ▶︎ `1`  
+Scale of the component (1.5 = 150%, 2 = 200%, etc.).
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+**perspective**: _number_ ▶︎ `1000`  
+The perspective property defines how far the object (wrapped/child component) is away from the user.  
+The lower the more extreme the tilt gets.
 
-## 💫 Deploy
+**flipVertically**: _boolean_ ▶︎ `false`  
+Boolean to enable/disable vertical flip of component.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
+**flipHorizontally**: _boolean_ ▶︎ `false`  
+Boolean to enable/disable horizontal flip of component.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog)
+**reset**: _boolean_ ▶︎ `true`  
+If the effects has to be reset on `onLeave` event.
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+**transitionEasing**: _string_ ▶︎ `cubic-bezier(.03,.98,.52,.99)`  
+Easing of the transition when manipulating the component.
+
+**transitionSpeed**: _number_ ▶︎ `400`  
+Speed of the transition when manipulating the component.
+
+**trackOnWindow**: _boolean_ ▶︎ `false`  
+Track mouse and touch events on the whole window.
+
+**gyroscope**: _boolean_ ▶︎ `false`  
+Boolean to enable/disable device orientation detection.
+
+**onMove**: _Function_ => (**tiltAngleX**: _number_, **tiltAngleY**: _number_, **tiltAngleXPercentage**: _number_, **tiltAngleYPercentage**: _number_, **glareAngle**: _number_, **glareOpacity**: _number_, **eventType**: _string | null_)  
+Gets triggered when user moves on the component.
+
+**onEnter**: _Function_ => (**eventType**: _string | null_)  
+Gets triggered when user enters the component.
+
+**onLeave**: _Function_ => (**eventType**: _string | null_)  
+Gets triggered when user leaves the component.
+
+## Gyroscope - Device Orientation
+
+Please keep in mind that detecting device orientation is currently [experimental technology](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Guidelines/Conventions_definitions#Experimental).  
+Check the [browser compatibility](https://caniuse.com/#search=DeviceOrientation) before using this in production.  
+A few takeaways when using device orientation event:
+
+- always use secure origins (such as `https`)
+- it doesn't work in all browsers when using it in cross-origin `<iframe>` element
+- Chrome, Firefox, Safari do not handle the angles the same way (on some axes the directions are reversed)
+
+## Development
+
+_Easily set up a local development environment!_
+
+Build all the examples and starts storybook server on [localhost:9009](http://localhost:9009):
+
+- clone
+- `npm install`
+- `npm start`
+
+OR
+
+Clone this repo on your machine, navigate to its location in the terminal and run:
+
+```bash
+npm install
+npm link # link your local repo to your global packages
+npm run build:watch # build the files and watch for changes
+```
+
+Clone project repo that you wish to test with react-parallax-tilt library and run:
+
+```bash
+npm install
+npm link react-parallax-tilt # link your local copy into this project's node_modules
+npm start
+```
+
+**Start coding!** 🎉
+
+## Contributing
+
+All contributions are welcome!  
+Please take a moment to review guidelines [PR](.github/PULL_REQUEST_TEMPLATE.md) | [Issues](.github/ISSUE_TEMPLATE.md)
+
+[npm-url]: https://www.npmjs.com/package/react-parallax-tilt
+[npm-badge]: https://img.shields.io/npm/v/react-parallax-tilt.svg
+[size-badge]: https://img.shields.io/bundlephobia/minzip/react-parallax-tilt.svg
+[downloads-badge]: https://img.shields.io/npm/dm/react-parallax-tilt.svg?color=blue
+[build-badge]: https://travis-ci.com/mkosir/react-parallax-tilt.svg
+[build-url]: https://travis-ci.com/mkosir/react-parallax-tilt
+[coverage-badge]: https://codecov.io/gh/mkosir/react-parallax-tilt/branch/master/graph/badge.svg
+[coverage-url]: https://codecov.io/gh/mkosir/react-parallax-tilt
+[typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
+[typescript-url]: https://github.com/microsoft/TypeScript
+[prettier-badge]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
+[prettier-url]: https://github.com/prettier/prettier
